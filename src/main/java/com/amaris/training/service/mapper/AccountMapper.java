@@ -9,6 +9,6 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface AccountMapper {
     Account registerAccountToAccount(RegisterAccount registerAccount);
-    @Mapping(target = "lastName")
+
     AccountResponse AccountToAccountResponse(Account account);
 }
