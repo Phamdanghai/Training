@@ -23,22 +23,21 @@ public class AccountController {
         accountService.createUser(registerAccount);
         return new ResponseEntity<>("Create Account successfully",null, HttpStatus.OK);
     }
-@PutMapping("/{id}")
-ResponseEntity<String> updateAccount(@RequestBody RegisterAccount registerAccount,@PathVariable Long id){
-    accountService.updateUser(registerAccount,id);
-    return new ResponseEntity<>("Update Account successfully",null, HttpStatus.OK);
-}
+    @PutMapping("/{id}")
+        AccountResponse updateAccount(@RequestBody RegisterAccount registerAccount,@PathVariable Long id){
+            return accountService.updateUser(registerAccount,id);
+    }
 
-@GetMapping
-List<AccountResponse> getAllAccount(){
+    @GetMapping
+        List<AccountResponse> getAllAccount(){
     return  accountService.getAllUser();
 }
 
-@DeleteMapping("/{id}")
-ResponseEntity<String> deleteAccount(@PathVariable Long id){
-    if (accountService.deleteUser(id)){
-        return new ResponseEntity<>("Delete successfully",null, HttpStatus.OK);
+    @DeleteMapping("/{id}")
+    ResponseEntity<String> deleteAccount(@PathVariable Long id){
+        if (accountService.deleteUser(id)){
+            return new ResponseEntity<>("Delete successfully",null, HttpStatus.OK);
+        }
+        return new ResponseEntity<>("Delete not successfully",null, HttpStatus.BAD_REQUEST);
     }
-    return new ResponseEntity<>("Delete not successfully",null, HttpStatus.BAD_REQUEST);
-}
 }
