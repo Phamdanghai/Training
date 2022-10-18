@@ -1,7 +1,7 @@
 package com.amaris.training.service;
 
-import com.amaris.training.request.RegisterAccount;
-import com.amaris.training.response.AccountResponse;
+import com.amaris.training.dto.request.RegisterAccount;
+import com.amaris.training.dto.response.AccountResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

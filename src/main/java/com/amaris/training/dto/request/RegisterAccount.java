@@ -1,26 +1,15 @@
-package com.amaris.training.response;
+package com.amaris.training.dto.request;
 
 import lombok.*;
 
-import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
-public class AccountResponse {
-    private Long id;
+public class RegisterAccount {
     private String firstName;
     private String lastName;
     private String email;
     private String phone;
-    private LocalDateTime createDate;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -52,13 +41,5 @@ public class AccountResponse {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public LocalDateTime getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(LocalDateTime createDate) {
-        this.createDate = createDate;
     }
 }

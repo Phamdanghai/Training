@@ -1,13 +1,12 @@
 package com.amaris.training.web.rest;
 
-import com.amaris.training.request.RegisterAccount;
-import com.amaris.training.response.AccountResponse;
+import com.amaris.training.dto.request.RegisterAccount;
+import com.amaris.training.dto.response.AccountResponse;
 import com.amaris.training.service.AccountService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,8 +19,9 @@ public class AccountController {
     }
 
     @PostMapping
-    AccountResponse createAccount(@RequestBody RegisterAccount registerAccount){
-        return  accountService.createUser(registerAccount);
+    ResponseEntity<String> createAccount(@RequestBody RegisterAccount registerAccount){
+        accountService.createUser(registerAccount);
+        return new ResponseEntity<>("Create Account successfully",null, HttpStatus.OK);
     }
 @PutMapping("/{id}")
 ResponseEntity<String> updateAccount(@RequestBody RegisterAccount registerAccount,@PathVariable Long id){
