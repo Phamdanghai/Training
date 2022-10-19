@@ -1,13 +1,13 @@
 package com.amaris.training.service.impl;
 
 import com.amaris.training.doman.Account;
+import com.amaris.training.exception.NotFoundException;
 import com.amaris.training.repository.AccountRepository;
 import com.amaris.training.dto.request.RegisterAccount;
 import com.amaris.training.dto.response.AccountResponse;
 import com.amaris.training.service.AccountService;
 import com.amaris.training.service.mapper.AccountMapper;
 import org.springframework.stereotype.Service;
-import org.webjars.NotFoundException;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

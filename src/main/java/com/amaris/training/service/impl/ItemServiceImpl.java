@@ -4,14 +4,16 @@ import com.amaris.training.doman.Catalog;
 import com.amaris.training.doman.Item;
 import com.amaris.training.dto.ItemDto;
 import com.amaris.training.dto.response.ItemResponse;
+import com.amaris.training.exception.ExistException;
+import com.amaris.training.exception.NotFoundException;
 import com.amaris.training.repository.CatalogRepository;
 import com.amaris.training.repository.ItemRepository;
 import com.amaris.training.service.ItemService;
 import com.amaris.training.service.mapper.ItemMapper;
 import org.springframework.stereotype.Service;
-import org.webjars.NotFoundException;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -44,7 +46,7 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public ItemResponse updateItem(ItemDto itemDto, Long id) {
         Item item = itemRepository.findById(id).orElseThrow(
-                () -> new NotFoundException("Not found")
+                () -> new NotFoundException("Not found Item")
         );
         Optional<Item> itemOptional = itemRepository.findByItemID(itemDto.getItemID());
         if(itemOptional.isEmpty() || item.getItemID().equals(itemDto.getItemID())){
@@ -53,7 +55,7 @@ public class ItemServiceImpl implements ItemService {
             itemRepository.save(item);
             return itemMapper.toItemResponse(item);
         }
-        throw new RuntimeException("Item is exist");
+        throw new ExistException("Item is exist");
     }
 
     @Override
@@ -62,7 +64,10 @@ public class ItemServiceImpl implements ItemService {
         if(itemList.isEmpty()){
             throw new NotFoundException("Nor found");
         }
-        return itemList.stream().map(ItemResponse::buildItemResponse).collect(Collectors.toList());
+        List<ItemResponse> itemResponseList = new ArrayList<>();
+        itemList.forEach(i -> itemResponseList.add(itemMapper.toItemResponse(i)));
+        return itemResponseList;
+//        return itemList.stream().map(ItemResponse::buildItemResponse).collect(Collectors.toList());
     }
 
     @Override

@@ -3,11 +3,11 @@ package com.amaris.training.service.impl;
 import com.amaris.training.doman.Account;
 import com.amaris.training.doman.Catalog;
 import com.amaris.training.dto.CatalogDto;
+import com.amaris.training.exception.NotFoundException;
 import com.amaris.training.repository.CatalogRepository;
 import com.amaris.training.service.CatalogService;
 import com.amaris.training.service.mapper.CatalogMapper;
 import org.springframework.stereotype.Service;
-import org.webjars.NotFoundException;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
