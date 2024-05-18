@@ -19,4 +19,28 @@ public class ErrorResponse {
         this.statusCode = statusCode;
         this.message = message;
     }
+
+    public int getStatusCode() {
+        return statusCode;
+    }
+
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Map<String, String> getValidateMessage() {
+        return validateMessage;
+    }
+
+    public void setValidateMessage(Map<String, String> validateMessage) {
+        this.validateMessage = validateMessage;
+    }
 }

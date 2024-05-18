@@ -29,7 +29,7 @@ public class GlobalHandlesException extends ResponseEntityExceptionHandler {
                     errors.put(fieldName,errorMessage);
                 }
         );
-        ErrorResponse errorResponse = new ErrorResponse(400,"Validation Error",errors);
+        ErrorResponse errorResponse = new ErrorResponse(400,"Validation Error");
         return new ResponseEntity<>(errorResponse,HttpStatus.BAD_REQUEST);
     }
 
